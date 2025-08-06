@@ -1,0 +1,152 @@
+@import "tailwindcss";
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* DESIGN TOKENS */
+:root {
+  --color-primary-500: oklch(0.71 0.19 264.23);
+  --color-ring-dark: #1e3a8a;
+}
+
+
+/* ANIMATIONS */
+
+
+@keyframes fadeInRingClip {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    clip-path: circle(50% at 50% 50%);
+  }
+}
+
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(-10deg); }
+}
+
+.spin-slow {
+  animation: spin-slow 2s linear infinite;
+}
+
+.ring-fade-in {
+  animation: fadeInRingClip 0.6s ease-out forwards;
+}
+
+.wave {
+  animation: wave 1.5s ease-in-out infinite;
+}
+
+.group:hover .wave-on-hover {
+  animation: wave 1.5s ease-in-out infinite;
+}
+
+/* IMAGE DEFAULTS */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* HEADSHOT CIRCLE */
+.headshot {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.headshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* TEXT OUTLINES */
+.text-outline-white {
+  text-shadow:
+    -1px -1px 0 #fff,
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff;
+}
+
+.text-outline-red {
+  text-shadow:
+    -1px -1px 0 #ff0000,
+     1px -1px 0 #ff0000,
+    -1px  1px 0 #ff0000,
+     1px  1px 0 #ff0000;
+}
+
+/* SPACING */
+.header,
+.techstack {
+  margin-bottom: 4rem;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin-slow {
+  animation: spin-slow 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.1); /* or use HSL/HSLA for subtle tints */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple 0.6s ease-out forwards;
+}

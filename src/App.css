@@ -1,0 +1,33 @@
+@tailwind utilities;
+
+.text-outline {
+  text-shadow:
+    -1px -1px 0 #ffffff,
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #ffffff,
+     1px  1px 0 #ffffff;
+}
+
+.text-outline-black {
+  text-shadow:
+    -2px 2px 0 #000000,
+     2px 2px 0 #000000,
+    -2px  2px 0 #000000,
+     2px  2px 0 #000000;
+}
+
+.text-outline-red {
+  text-shadow:
+    -0.5px -0.5px 0 #ef4444,
+     0.5px -0.5px 0 #ef4444,
+    -0.5px  0.5px 0 #ef4444,
+     0.5px  0.5px 0 #ef4444;
+}
+
+.bg-parallax {
+  background-image: url('your-image.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
