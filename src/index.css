@@ -1,22 +1,32 @@
 @import "tailwindcss";
 /* RESET */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  font-family: sans-serif;
-  background-color: #f9f9f9;
-  color: #222;
-  line-height: 1.6;
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    color: #222;
+    line-height: 1.6;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 }
 
 /* DESIGN TOKENS */
@@ -64,13 +74,6 @@ body {
   animation: wave 1.5s ease-in-out infinite;
 }
 
-/* IMAGE DEFAULTS */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 /* HEADSHOT CIRCLE */
 .headshot {
   width: 112px;
@@ -86,23 +89,6 @@ img {
   object-fit: cover;
   border-radius: 50%;
   display: block;
-}
-
-/* TEXT OUTLINES */
-.text-outline-white {
-  text-shadow:
-    -1px -1px 0 #fff,
-     1px -1px 0 #fff,
-    -1px  1px 0 #fff,
-     1px  1px 0 #fff;
-}
-
-.text-outline-red {
-  text-shadow:
-    -1px -1px 0 #ff0000,
-     1px -1px 0 #ff0000,
-    -1px  1px 0 #ff0000,
-     1px  1px 0 #ff0000;
 }
 
 /* SPACING */
@@ -149,4 +135,13 @@ img {
 
 .animate-ripple {
   animation: ripple 0.6s ease-out forwards;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

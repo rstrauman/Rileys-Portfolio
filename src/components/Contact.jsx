@@ -40,7 +40,7 @@ const Contact = () => {
 
     return (
     <>
-       <div onClick={handleRipple} id="contact" className="relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl w-full max-w-[600px] text-center mx-auto flex flex-col items-center min-h-[160px]" data-aos="fade-up">
+       <div onClick={handleRipple} id="contact" className="scroll-mt-24 relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl w-full max-w-[600px] text-center mx-auto flex flex-col items-center pb-10" data-aos="fade-up">
         {ripples.map((ripple) => (
                   <span
                     key={ripple.id}
@@ -56,7 +56,7 @@ const Contact = () => {
                 ))}
         <div className="h-4" />
         <h1
-            className="text-4xl font-bold text-outline-white mt-8 mb-12"
+            className="text-4xl font-bold mt-8 mb-12"
             style={{ color: "var(--color-primary-500)" }}
         >
             Contact Me
@@ -64,12 +64,20 @@ const Contact = () => {
         <div className="h-2" />
         <p className="text-white text-lg mb-6">Have a question or want to work together?</p>
         <div className="h-2" />
-        <a href="mailto:riley.s2003@hotmail.com" className="text-black hover:underline transition-transform duration-200 ease-in-out hover:scale-110">
+        <a href="mailto:riley.s2003@hotmail.com" className="text-white font-semibold hover:underline transition-transform duration-200 ease-in-out hover:scale-110">
           riley.s2003@hotmail.com
         </a>
-        <div className="relative overflow-hidden text-center mx-auto max-w-fit min-h-[25px] flex flex-row justify-center items-center gap-4 px-3 py-2">              
+        <div className="h-6" />
+        <a
+          href="/R.Strauman_Resume.pdf"
+          download
+          className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 transition-all duration-200 ease-in-out hover:scale-105"
+        >
+          📄 Download Resume
+        </a>
+        <div className="relative overflow-hidden text-center mx-auto max-w-fit min-h-[25px] flex flex-row justify-center items-center gap-4 px-3 py-2 mt-6">
         <a href="https://github.com/rstrauman" target="_blank" rel="noopener noreferrer">
-          <img src={github} alt="GitHub" className="w-12 h-12 align-middle transition-transform duration-200 ease-in-out hover:scale-110" />
+          <img src={github} alt="GitHub" className="w-12 h-12 object-cover scale-75 align-middle transition-transform duration-200 ease-in-out hover:scale-90" />
         </a>
         <a href="https://linkedin.com/in/rileystrauman" target="_blank" rel="noopener noreferrer">
           <img src={linkd} alt="LinkedIn" className="w-12 h-12 align-middle transition-transform duration-200 ease-in-out hover:scale-110" />

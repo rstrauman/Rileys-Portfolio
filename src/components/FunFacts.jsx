@@ -41,7 +41,7 @@ useEffect(() => {
 
   return (
 <>  
-    <div onClick={handleRipple} className="relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl w-full max-w-[800px] text-center mx-auto items-center min-h-[400px]" data-aos="fade-up">
+    <div onClick={handleRipple} className="relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl w-full max-w-[800px] text-center mx-auto items-center pb-12" data-aos="fade-up">
   <div className="h-4" />
     {ripples.map((ripple) => (
                   <span
@@ -57,7 +57,7 @@ useEffect(() => {
                   />
                 ))}
   <h1
-    className="text-4xl font-bold text-outline-white mt-8 mb-4"
+    className="text-4xl font-bold mt-8 mb-4"
     style={{ color: "var(--color-primary-500)" }}
   >
     Fun Facts

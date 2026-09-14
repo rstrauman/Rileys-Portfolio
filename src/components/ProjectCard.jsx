@@ -10,7 +10,7 @@ function ProjectCard({ project }) {
       <img
         src={project.imageUrl}
         alt={`${project.title} screenshot`}
-        className="w-64 h-40 object-cover rounded-md mb-4"
+        className="w-full max-w-64 h-40 object-cover rounded-md mb-4"
       />
 
       {/* Title */}
@@ -31,14 +31,16 @@ function ProjectCard({ project }) {
         >
           GitHub
         </a>
-        <a
-          href={project.demoLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-400 hover:underline"
-        >
-          Live Demo
-        </a>
+        {project.demoLink && (
+          <a
+            href={project.demoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:underline"
+          >
+            Live Demo
+          </a>
+        )}
       </div>
       <div className="h-4" />
     </div>

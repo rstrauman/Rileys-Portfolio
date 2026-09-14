@@ -71,10 +71,10 @@ export default function Header() {
       ))}
 
       {/* Top Row: Name + Headshot */}
-      <div className="flex items-center justify-center gap-12 sm:gap-12 px-4 mt-8">
+      <div className="flex flex-col-reverse sm:flex-row items-center justify-center gap-6 sm:gap-12 px-4 mt-8">
         {/* Name */}
         <h1
-          className="text-4xl sm:text-5xl font-bold whitespace-nowrap text-outline-white"
+          className="text-3xl sm:text-4xl lg:text-5xl lg:whitespace-nowrap font-bold"
           style={{ color: "var(--color-primary-500)" }}
         >
           Riley Strauman | Developer
@@ -82,7 +82,7 @@ export default function Header() {
 
         {/* Headshot w/ ring and emoji */}
         <div
-          className="relative w-32 h-32 rounded-full ml-4 mt-8"
+          className="relative w-32 h-32 rounded-full shrink-0 sm:ml-4 sm:mt-8"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -132,20 +132,20 @@ export default function Header() {
 
       {/* Intro Text */}
       <p className="text-xl text-gray-300 px-4 max-w-3xl mx-auto">
-        I'm Riley — a front-end developer with a passion for software development,
+        I'm Riley - a full stack developer with a passion for software development,
         clean UI, thoughtful user experiences, and interactive web apps.
       </p>
 
       {/* Location */}
-      <p className="text-2xl text-white text-outline-red">
+      <p className="text-2xl text-white">
         📍Winnipeg, Manitoba, Canada
       </p>
     </div>
     <div className="h-2"></div>
-    <div className="relative overflow-hidden bg-gray-900 border rounded-xl border-white/20 text-center mx-auto px-4 py-2 max-w-fit min-h-[25px] flex flex-row justify-center items-center gap-1 shadow-xl" data-aos="fade-left">
+    <div className="relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl text-center mx-auto px-4 py-2 max-w-fit min-h-[25px] flex flex-row justify-center items-center gap-1 shadow-xl" data-aos="fade-left">
 
       <a href="https://github.com/rstrauman" target="_blank" rel="noopener noreferrer">
-        <img src={github} alt="GitHub" className="w-8 h-8 transition-transform duration-200 ease-in-out hover:scale-120" />
+        <img src={github} alt="GitHub" className="w-8 h-8 object-cover scale-75 transition-transform duration-200 ease-in-out hover:scale-90" />
       </a>
       <a href="https://linkedin.com/in/rileystrauman" target="_blank" rel="noopener noreferrer">
         <img src={linkd} alt="LinkedIn" className="w-8 h-8 transition-transform duration-200 ease-in-out hover:scale-120" />

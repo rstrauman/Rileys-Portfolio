@@ -11,6 +11,9 @@ import martinNGina from './martin&Gina.PNG';
 import roboSnip from './roboman-snip.PNG';
 import pape from './pape.PNG';
 import calc from './calc.PNG';
+import workoutTracker from './workout-tracker.jpg';
+import onlineStore from './online-store.jpg';
+import linkedInButBetter from './linkedin-but-better.png';
 
 // Tech Journey Icons
 import scratch from './scratch.png';
@@ -27,7 +30,8 @@ import x from './twitter.png';
 
 export {
   bgImage, tempHeadshot, aboutImage, Headshot,
-  gooberEats, taskManager, martinNGina, roboSnip, pape, calc, 
+  gooberEats, taskManager, martinNGina, roboSnip, pape, calc,
+  workoutTracker, onlineStore, linkedInButBetter,
   scratch, greenfoot, cpp, unity, godot, js, mitt,
   linkd, github, x, 
 

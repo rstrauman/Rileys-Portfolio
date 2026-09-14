@@ -44,7 +44,7 @@ const [ripples, setRipples] = useState([]);
   return (
 <>  
     <div onClick={handleRipple}
-    id="about" className= "scroll-mt-20 relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl w-full max-w-[1200px] text-center mx-auto flex flex-col items-center min-h-[400px]" data-aos="fade-up">
+    id="about" className= "scroll-mt-20 relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl w-full max-w-[1200px] text-center mx-auto flex flex-col items-center pb-12" data-aos="fade-up">
         {ripples.map((ripple) => (
                 <span
                   key={ripple.id}
@@ -61,7 +61,7 @@ const [ripples, setRipples] = useState([]);
         
         <div className="h-4" />
         <h1
-            className="text-4xl font-bold text-outline-white mt-8 mb-12" data-aos="fade-left"
+            className="text-4xl font-bold mt-8 mb-12" data-aos="fade-left"
             style={{ color: "var(--color-primary-500)" }}
         >
             About Me!
@@ -69,10 +69,10 @@ const [ripples, setRipples] = useState([]);
 
         <div className="h-4" />
 
-        <div className="flex flex-row items-start gap-10 text-left w-full max-w-5xl">
+        <div className="flex flex-col-reverse sm:flex-row items-center sm:items-start gap-10 text-left w-full max-w-5xl px-6 sm:px-4">
 
-        <p className="text-white text-base leading-relaxed flex-1 pr-4" data-aos="fade-right">
-  Hey, I’m Riley — an <span className="text-accent font-semibold">aspiring full-stack developer</span> with a growing passion for clean, user-friendly digital experiences.
+        <p className="text-white text-base leading-relaxed flex-1 sm:pr-4" data-aos="fade-right">
+  Hey, I’m Riley a <span className="text-accent font-semibold">full-stack developer</span> with a growing passion for clean, user-friendly digital experiences.
 My coding journey started back in high school, where I built a chaotic Mario Kart x Frogger mashup using Java and Greenfoot. I also picked up the basics of C++ and C#, which laid the groundwork for everything I do now.
 
   <br /><br />
@@ -81,7 +81,7 @@ My coding journey started back in high school, where I built a chaotic Mario Kar
 
   <br /><br />
 
-  I bring <span className="font-semibold">discipline, adaptability, and a problem-solving mindset</span> to every challenge — whether I’m coding, collaborating, or helping others grow. While I love crafting great UI and UX, I’m just as excited by the complexity of full-stack development.
+  I bring <span className="font-semibold">discipline, adaptability, and a problem-solving mindset</span> to every challenge - whether I’m coding, collaborating, or helping others grow. While I love crafting great UI and UX, I’m just as excited by the complexity of full-stack development.
 </p>
 
             <img

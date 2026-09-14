@@ -65,7 +65,7 @@ const Games = () => {
   return (
     <>
       <div onClick={handleRipple}
-      className="relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl text-center mx-auto flex flex-col items-center min-h-[400px] w-full max-w-[940px]" data-aos="fade-up">
+      className="relative overflow-hidden bg-gradient-to-br from-white/10 to-white/5 dark:from-white/10 dark:to-white/0 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-xl text-center mx-auto flex flex-col items-center pb-10 w-full max-w-[940px]" data-aos="fade-up">
         {ripples.map((ripple) => (
                   <span
                     key={ripple.id}
@@ -81,18 +81,17 @@ const Games = () => {
                 ))}
         <div className="h-4" />
         <h1
-          className="text-4xl font-bold text-outline-white mt-8 mb-12"
+          className="text-4xl font-bold mt-8 mb-12"
           style={{ color: "var(--color-primary-500)" }}
         >
           Games
         </h1>
         <div className="h-4" />
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center px-4 w-full max-w-[880px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center px-4 w-full max-w-[880px]">
           {games.map((game) => (
             <ProjectCard key={game.title} project={game} />
           ))}
         </div>
-        <div className="h-6" />
       </div>
     </>
   );

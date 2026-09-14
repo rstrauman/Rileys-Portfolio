@@ -22,15 +22,14 @@ const App = () => {
     
   <ParallaxBackground bgImage={bgImage}>
     <Navbar />
-    <div id="home" className="h-72" />
+    <div id="home" className="h-16 sm:h-40 lg:h-72" />
     <Header />
   </ParallaxBackground>
-  <div className="absolute bottom-0 w-full h-48 bg-gradient-to-b from-transparent to-[#000000] z-10 pointer-events-none" />
     <div
   className="min-h-screen flex flex-col"
   style={{
     background:
-      `linear-gradient(to bottom, #000000, #1e1b4b 40%, #1e3a8a 70%, #60a5fa 100%)`
+      `linear-gradient(to bottom, #000000, #1e1b4b 40%, #1e3a8a 70%, #35529e 100%)`
   }}
 >
     <div className="h-36" />
