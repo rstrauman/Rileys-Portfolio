@@ -4,37 +4,32 @@ Status as of this session. Dev server was running at `http://localhost:3000` via
 
 ## ✅ Done and confirmed working
 
-- **Image swap bug fixed** — `src/components/Projects.jsx`: Goober Eats and Calculator now show the correct screenshots (verified visually in browser).
-- **Contact email contrast fixed** — `src/components/Contact.jsx`: email link changed from `text-black` (unreadable on the glass card) to `text-white font-semibold`.
-- **Dead import removed** — `src/components/TechJourney.jsx` had a stray `import AOS from 'react'` shadowing nothing, doing nothing. Removed.
-- **Anchor-scroll offset** — added `scroll-mt-24` to the Projects and Contact section containers (About already had `scroll-mt-20`) so clicking nav links doesn't land content under the floating navbar.
-- **MITT timeline copy** — updated "2025-2026" entry from future tense ("I will begin") to present tense since Riley is now actually in the program.
+Extensive polish pass across the whole site this session, including:
 
-## ✅ Root cause found and fixed (this session)
+- **Root-caused and fixed the "responsive classes don't work" bug** — was two CSS cascade issues: a duplicate Tailwind compilation in `src/App.css` (leftover `@tailwind utilities;` directive competing with `index.css`'s real one), and an unlayered global reset (`* { margin: 0 }`) in `index.css` silently beating every Tailwind margin/layout utility sitewide per the CSS Cascade Layers spec. Both fixed (`App.css` cleaned up, reset wrapped in `@layer base`).
+- **Header**: fixed spacing (was too much dead space above the card), fixed the headshot rendering as an oval instead of a circle (same unlayered-`img`-rule root cause as above), fixed the GitHub icon being stretched/dark (source PNG has a wide canvas — added `object-cover` + `scale-75`), matched the socials pill's background to the header card's glass style.
+- **Background**: fixed a hard visual seam between the starfield hero and the page's gradient body (a mispositioned `absolute` fade div, `position` context bug); capped the gradient's brightest stop so the Contact/Fun Facts sections at the bottom don't wash out light text.
+- **Techstack**: added missing resume tech (TypeScript, .NET, C++, Java, Dart, Flutter, PHP, SQL, React Native, EF Core, SSMS, Jira, NuGet, Supabase, Firebase) with devicon icons; fixed invisible/near-black icons (JSON, Express, GitHub) with explicit `text-white`; made both icon-grid cards equal height via flex-stretch; added horizontal/vertical padding.
+- **Tech Journey**: fixed the desktop timeline needing horizontal+vertical scrollbars and clipping top-row cards (fixed pixel widths didn't fit, `overflow-x-auto` combined with `overflow-x-hidden`'s CSS spec quirk was forcing `overflow-y: auto`); added matching `rounded-xl`; fixed typos in the milestone copy.
+- **Projects section**: rebuilt as a horizontally auto-scrolling image-card carousel (styled after theboboapp.com) — screenshot background, bottom-left title + links, top-right glass description panel, pause-on-hover, working prev/next arrows (fixed a bug where the autoplay loop was fighting the manual scroll). Added 3 real projects (Workout Tracker, Veltra Online Store, LinkedIn But Better) with screenshots pulled from their live deployments/repos. Reordered per Riley's preference: Workout Tracker → Veltra → Goober Eats → LinkedIn But Better → Calculator → Task Manager.
+- **Games section**: fixed the same "empty bottom gap" `min-h` pattern bug found elsewhere.
+- **Navbar**: matched glass style to the rest of the site (was flat `bg-gray-900`); fixed hover icon reveal to properly slide the text over rather than just fading in with a too-wide gap.
+- **Design cleanup**: removed the white/red text-shadow outlines site-wide (title text reads cleaner without them now that contrast is fixed everywhere) and deleted the now-dead CSS.
+- **Content**: added a "Download Resume" button to Contact (`public/R.Strauman_Resume.pdf`), added a custom favicon (`{RS}` badge), fixed several copy typos (expaned→expanded, Calcualtor→Calculator, Institue→Institute, knoweldge→knowledge, etc.).
+- **Technical hygiene**: fixed the site loading Inter font but never applying it (`font-family: sans-serif` → `'Inter', sans-serif`), added meta description + Open Graph/Twitter tags to `index.html` for link previews.
+- **Mobile**: confirmed fine by Riley (viewport resize testing was unreliable in this session's browser automation, so this was a manual check on his end, not automated verification).
 
-The "responsive classes don't work at all" bug was **not** a Tailwind v4/Vite config problem — it was two separate CSS cascade bugs, both now fixed:
+## Deliberately not done (asked, decided against for now)
 
-1. **Stale dev server holding port 3000.** A node process from a previous session (started 2026-09-11) was still running and serving old/cached CSS. Killed it, cleared `node_modules/.vite`, restarted `npm run dev` clean. This alone made `sm:`/`md:`/`lg:` selectors start appearing in the compiled CSS again.
-2. **Duplicate Tailwind compilation in `src/App.css`.** This leftover-from-scaffold file had `@tailwind utilities;` (the old Tailwind v3 directive) in addition to the real `@import "tailwindcss";` already in `index.css`. This produced a second, non-variant-scoped utilities stylesheet that loaded *after* `index.css` and won cascade ties (e.g. its plain `.flex-col-reverse` beat `index.css`'s properly-scoped `.sm:flex-row`) — this is why nothing responsive ever visibly applied, at any width. **Fix:** removed the `@tailwind utilities;` line from `App.css` (kept its other custom classes — `.text-outline`, `.bg-parallax`, etc. — those are plain CSS, not Tailwind-generated).
-3. **Unlayered global reset beating Tailwind utilities.** `index.css`'s `*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }` reset was written outside any `@layer`. Tailwind v4 puts all its utilities inside cascade layers (`@layer theme, base, components, utilities`), and per spec, **unlayered CSS always beats layered CSS regardless of specificity**. So that reset's `margin: 0` was silently overriding every Tailwind margin utility (`mt-8`, `ml-4`, etc.) sitewide — this is why the Header headshot's `sm:mt-8`/`sm:ml-4` offset always computed to `0px` even once the `sm:` bug above was fixed. **Fix:** wrapped the reset in `@layer base { ... }` so it now participates in the layer cascade at the correct (lowest) priority.
+- **Workout Tracker live demo link** — its Firebase Hosting URL is real and working, but Riley's own dev notes call it "unlisted, not shared anywhere," so only the GitHub link is shown, no live demo link.
 
-Also fixed as part of re-verifying Header against the live reference site (rstrauman.github.io/Rileys-Portfolio) at desktop width:
-- Header `h1` lost `whitespace-nowrap` when its text-size classes were changed to `text-3xl sm:text-4xl lg:text-5xl`, causing the name to wrap to two lines at desktop widths (it's one line on the live reference). Restored as `lg:whitespace-nowrap` (nowrap only at desktop; still allowed to wrap on mobile where space is tight).
+## Future ideas (not started, explicitly deferred)
 
-**Verified working:** Header at 1696px now matches the live reference — name single-line, headshot offset to the right with no overlap on the intro paragraph, flex-direction correctly resolves to `row` via `getComputedStyle`.
-
-**Not yet re-verified:** Could not get the browser automation's `resize_window` tool to actually shrink the viewport this session (window appears locked/maximized in this environment — `innerWidth` stayed 1696 regardless of requested size). So the *mobile* (`flex-col-reverse`, stacked) side of Header, plus all the other components' mobile layouts, have not been visually re-checked yet — only reasoned about (flex-direction isn't touched by the reset bug, so there's no known reason it wouldn't apply, but it hasn't been *seen*). Worth a manual check on a real device or a working devtools device-toolbar before calling this fully done.
-
-## Next steps (in order)
-
-1. **Visually re-verify mobile layout** (~390px) for real, once viewport resizing is working (try a fresh browser tab/window, or check manually) — Header, Navbar, About, Techstack, ProjectCard, Projects, Games, TechJourney, ParallaxBackground/App.jsx hero spacing.
-2. **Re-verify the rest of desktop** (~1400-1700px) against the live reference site the same way Header was checked — specifically: Projects/Games grids are multi-column; Techstack is two columns; TechJourney desktop timeline (`hidden lg:block`) shows and the stacked mobile version (`lg:hidden`) is hidden.
-3. Still outstanding from the original review (not started):
-   - Add new/current projects to the Projects section (this portfolio itself, anything else built since August).
-   - Decide on the About Me photo (currently a joke childhood photo) — keep, replace, or move elsewhere.
-   - Minor polish items from the school portfolio worth borrowing: `{RS}` logo badge in the nav, envelope icon next to contact email (already fairly close since email fix).
+- **A "featured project" case-study treatment** for Workout Tracker specifically (it's the most substantial build — real auth, Firestore, security rules — but currently gets the same brief description as every other project). Would show technical depth a one-liner can't.
+- **An explicit availability line** (e.g. "Currently seeking co-op/internship opportunities") near the name or in Contact, if true — tells recruiters what to do with the info instead of making them guess.
+- Lower priority / optional, only if wanted later: compress the project screenshot images (a couple are full-res PNG/JPG), consider unifying Games' static-grid style with Projects' new carousel (or keep the contrast intentional).
 
 ## Reference
 
 - Dev server: `npm run dev` (port 3000 — 5173 is used by another local project, `workout-tracker`, on this machine).
-- Both live reference sites reviewed in browser: original (`rstrauman.github.io/Rileys-Portfolio`) and school project (`rstrauman.github.io/riley_strauman_portfolio`).
+- Live site: `rstrauman.github.io/Rileys-Portfolio` — after any future deploy, double-check the resume link (`/R.Strauman_Resume.pdf`) still resolves given the GitHub Pages subpath.
