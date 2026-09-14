@@ -69,7 +69,7 @@ const Contact = () => {
         </a>
         <div className="h-6" />
         <a
-          href="/R.Strauman_Resume.pdf"
+          href={`${import.meta.env.BASE_URL}R.Strauman_Resume.pdf`}
           download
           className="inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 transition-all duration-200 ease-in-out hover:scale-105"
         >
